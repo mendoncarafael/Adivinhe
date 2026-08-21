@@ -1,0 +1,16 @@
+.container {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 0.43rem;
+  outline: none;
+
+  background-color: #ebebfc;
+  border: 2px solid #6363db;
+
+  text-transform: uppercase;
+  text-align: center;
+  color: #6363db;
+
+  font-size: 1rem;
+  font-weight: 700;
+}
