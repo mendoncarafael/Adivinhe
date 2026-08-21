@@ -1,75 +1,69 @@
-# React + TypeScript + Vite
+# Adivinhe 🔤
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Jogo de adivinhar palavras inspirado no clássico "jogo da forca", desenvolvido com **React**, **TypeScript** e **Vite**.
 
-Currently, two official plugins are available:
+## ✨ Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Palavras aleatórias com dicas
+- Sistema de pontuação (máx. 10 pontos)
+- Controle de letras já utilizadas
+- Reinício do jogo
+- Interface responsiva e estilizada
 
-## React Compiler
+## 🚀 Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/) 19
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Motion](https://motion.dev/) (animações)
+- [Lucide React](https://lucide.dev/) (ícones)
 
-## Expanding the ESLint configuration
+## 📦 Como executar
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Pré-requisitos
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [Node.js](https://nodejs.org/) (versão 18+)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Instalação
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/react-studys.git
 
+# Acesse a pasta do projeto
+cd react-studys
+
+# Instale as dependências
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Rodando o projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Acesse `http://localhost:5173` no seu navegador.
+
+## 🛠️ Scripts disponíveis
+
+| Comando           | Descrição                            |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Inicia o servidor de desenvolvimento |
+| `npm run build`   | Gera a build de produção             |
+| `npm run preview` | Pré-visualiza a build gerada         |
+| `npm run lint`    | Executa o ESLint                     |
+
+## 📁 Estrutura de pastas
 
 ```
+src/
+├── components/    # Componentes reutilizáveis (Button, Header, Input, etc.)
+├── utils/         # Dados e tipos (words.ts)
+├── App.tsx        # Componente principal do jogo
+└── main.tsx       # Ponto de entrada
+```
+
+## 📝 Licença
+
+Este projeto é apenas para fins de estudo.
