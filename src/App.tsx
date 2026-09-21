@@ -13,14 +13,14 @@ export function App() {
   const [letter, setLetter] = useState("");
   const [attempts, setAttempts] = useState(0);
   const [lettersUsed, setLettersUsed] = useState<LetterUsedProps[]>([]);
-  const [challange, setChallenge] = useState<Challenge | null>(null);
+  const [challenge, setChallenge] = useState<Challenge | null>(null);
 
   function handleRestartGame() {
     startGame();
   }
 
   function handleConfirm() {
-    if (!challange) {
+    if (!challenge) {
       return;
     }
 
@@ -34,10 +34,11 @@ export function App() {
     );
 
     if (exist) {
+      setLetter("");
       return alert("Letra ja utilizada");
     }
 
-    const hits = challange.word
+    const hits = challenge.word
       .toUpperCase()
       .split("")
       .filter((char) => char === value).length;
@@ -59,21 +60,52 @@ export function App() {
     setLettersUsed([]);
   }
 
+  function endGame(message: string) {
+    alert(message);
+    startGame();
+  }
+
   useEffect(() => {
     startGame();
   }, []);
 
-  if (!challange) {
+  useEffect(() => {
+    if (!challenge) {
+    }
+
+    setTimeout(() => {
+      if (score === challenge?.word.length) {
+        return endGame("Parábens, você descobriu a palavra");
+      }
+
+      const attemptsLimit = challenge?.word ? challenge.word.length + 5 : 15;
+
+      if (lettersUsed.length === attemptsLimit) {
+        endGame("Você excedeu o limite de tentativas");
+      }
+    }, 200);
+  }, [score, lettersUsed.length]);
+
+  if (!challenge) {
     return;
+  }
+
+  if (lettersUsed.length > 10) {
+    window.alert("Número de tentativas excedido");
+    startGame();
   }
 
   return (
     <div className={styles.container}>
       <main>
-        <Header current={score} max={10} onRestart={handleRestartGame} />
-        <Tip tip={challange.tip} />
+        <Header
+          current={lettersUsed.length}
+          max={challenge.word.length + 5}
+          onRestart={handleRestartGame}
+        />
+        <Tip tip={challenge.tip} />
         <div className={styles.word}>
-          {challange.word.split("").map((letter, index) => {
+          {challenge.word.split("").map((letter, index) => {
             const letterUsed = lettersUsed.find(
               (used) => used.value.toUpperCase() === letter.toUpperCase(),
             );
